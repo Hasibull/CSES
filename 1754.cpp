@@ -1,8 +1,8 @@
 /**
 * Author: Hasibul Islam
 * Created on: 2025-08-10 18:09
-* Short Desc: 
-* IDEA: 
+* Short Desc: perform get 2 from one coin pile and 1 from another pile
+* IDEA: 2x + y = pile one and x + 2y = pile two
 */
 
 #include <bits/stdc++.h>
@@ -19,18 +19,15 @@ int main()
 
     while (tc--)
     {
-        int a, b;
+        double a, b, x, y;
         cin >> a >> b;
 
-        if ((a % 3 != 0) && (a % 3 == b % 3))
-            cout << "NO" << endl;
-        else if ((b % 3 != 0) && (a % 3 == b % 3))
-            cout << "NO" << endl;
-        else if ((a == 0 && b != 0) || (a != 0 && b == 0))
-            cout << "NO" << endl;
-        else if (b < a && (a > b * 2))
-            cout << "NO" << endl;
-        else if (a < b && (b > a * 2))
+        x = ((2.0 * a) - b) / 3.0;
+        y = a - (2.0 * x);
+        printf("%.2lf\n", (2.0 * x));
+
+        printf("%.2lf %.2lf\n", x, y);
+        if ((x - y) <= 0.01)
             cout << "NO" << endl;
         else
             cout << "YES" << endl;
