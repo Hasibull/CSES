@@ -9,37 +9,43 @@
 
 using namespace std;
 
+void permutation(string str, int index, set<string> &hash)
+{
+    int i;
+
+    if (index == str.size())
+    {
+        hash.insert(str);
+        return;
+    }
+
+    for (i = index; i < str.size(); i++)
+    {
+        swap(str[index], str[i]);
+        permutation(str, index + 1, hash);
+        swap(str[index], str[i]);
+    }
+}
+
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int i, j, up = 1, low = 1;
     string str;
-    char duplicate[30];
-    memset(duplicate, 0, sizeof(duplicate));
+    set<string> hash;
+    vector<string> ans;
     
     cin >> str;
     cin.ignore();
 
-    for (i = 0; i < str.size(); i++)
-    {
-        up *= (i + 1);
-        duplicate[str[i] - 'a']++;
-    }
+    permutation(str, 0, hash);
 
-    for (i = 0; i < 30; i++)
+    cout << hash.size() << endl;
+    for (auto value: hash)
     {
-        if (duplicate[i] > 0)
-        {
-            for (j = 1; j <= duplicate[i]; j++)
-            {
-                low *= j;
-            }
-        }
+        cout << value << endl;
     }
-
-    cout << up / low << endl;
     
     return 0;
 }
