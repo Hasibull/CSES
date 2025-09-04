@@ -1,8 +1,8 @@
 /**
 * Author: Hasibul Islam
 * Created on: 2025-09-04 22:06
-* Short Desc: 
-* IDEA: 
+* Short Desc: assign desired value
+* IDEA: sort and search from lower value
 */
 
 #include <bits/stdc++.h>
