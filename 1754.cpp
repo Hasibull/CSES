@@ -2,7 +2,7 @@
 * Author: Hasibul Islam
 * Created on: 2025-08-10 18:09
 * Short Desc: perform get 2 from one coin pile and 1 from another pile
-* IDEA: 2x + y = pile one and x + 2y = pile two
+* IDEA: checking divisibility by 3 and checking 0 or more than double of one another.
 */
 
 #include <bits/stdc++.h>
@@ -19,18 +19,26 @@ int main()
 
     while (tc--)
     {
-        double a, b, x, y;
+        int a, b;
+        
         cin >> a >> b;
 
-        x = ((2.0 * a) - b) / 3.0;
-        y = a - (2.0 * x);
-        printf("%.2lf\n", (2.0 * x));
-
-        printf("%.2lf %.2lf\n", x, y);
-        if ((x - y) <= 0.01)
+        if ((a > (b * 2)) || (b > (a * 2)))
+        {
             cout << "NO" << endl;
-        else
+        }
+        else if (a % 3 == 0 && b % 3 == 0)
+        {
             cout << "YES" << endl;
+        }
+        else if (((a % 3) == 1 && (b % 3) == 2) || ((a % 3) == 2 && (b % 3) == 1))
+        {
+            cout << "YES" << endl;
+        }
+        else
+        {
+            cout << "NO" << endl;
+        }
     }
     
     return 0;
