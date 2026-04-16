@@ -48,19 +48,21 @@ bool is_safe_place(vector<string> &board, int n, int row, int col)
     return true;
 }
 
-void n_queens(vector<string> &board, int row, int n, int ans)
+void n_queens(vector<string> &board, int row, int n, int *ans)
 {
     if (row == n)
     {
-        ans += 1;
+        *ans += 1;
     }
     else
     {
         for (int i = 0; i < n; i++)
         {
-            if (is_safe_place(board, n, row, i))
+            if (board[row][i] != '*' && is_safe_place(board, n, row, i))
             {
-                n_queens(board, )
+                board[row][i] = 'Q';
+                n_queens(board, row + 1, n, ans);
+                board[row][i] = '.';
             }
         }
     }
@@ -83,10 +85,9 @@ int main()
         board.push_back(str);
     }
 
-    for (auto val: board)
-    {
-        cout << val << endl;
-    }
+    n_queens(board, 0, n, &ans);
+
+    cout << ans << endl;
     
     return 0;
 }
